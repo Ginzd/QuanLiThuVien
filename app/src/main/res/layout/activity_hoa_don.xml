@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/wall1"
+    tools:context=".HoaDonActivity">
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thêm Hóa Đơn"
+        android:textSize="24dp"
+        android:textStyle="bold"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/food_cart"
+        android:layout_marginBottom="34dp"/>
+        <EditText
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/edittext_style"
+            android:ems="15"
+            android:hint="Ma Hoa Don"
+            android:id="@+id/edtMaHoaDon"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <EditText
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/edittext_style"
+            android:hint="DD-MM-YYYY"
+            android:ems="15"
+            android:id="@+id/edtNgayMua"
+            android:textSize="18dp"/>
+
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:onClick="datePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:src="@drawable/date" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:background="#8BC34A"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="AddHoaDon"
+            android:text="Thêm" />
+        <Button
+            android:background="#8BC34A"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="huyHoaDon"
+            android:text="Huỷ" />
+    </LinearLayout>
+
+</LinearLayout>

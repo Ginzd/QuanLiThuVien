@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_nguoidung"
+            android:icon="@drawable/avatauser"
+            android:title="@string/menu_nguoidung" />
+        <item
+            android:id="@+id/nav_theloai"
+            android:icon="@drawable/ic_baseline_category_24"
+            android:title="@string/menu_theloai" />
+        <item
+            android:id="@+id/nav_sach"
+            android:icon="@drawable/bookicon1"
+            android:title="@string/menu_sach" />
+        <item
+            android:id="@+id/nav_hoadon"
+            android:icon="@drawable/cart_ion1"
+            android:title="@string/meny_hoadon" />
+
+    </group>
+    <item android:title="Thong Ke">
+        <menu>
+            <item
+                android:id="@+id/nav_sachbanchay"
+                android:icon="@drawable/ic_baseline_local_atm_24"
+                android:title="@string/menu_sachbanchay" />
+            <item
+                android:id="@+id/nav_thongke"
+                android:icon="@drawable/ic_baseline_attach_money_24"
+                android:title="@string/menu_thongke" />
+        </menu>
+    </item>
+
+
+</menu>

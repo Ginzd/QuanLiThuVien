@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.quanlithuvien.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+    <activity
+        android:id="@+id/nav_nguoidung"
+        android:name="com.example.quanlithuvien.ListNguoiDungActivity"
+        android:label="@string/menu_nguoidung"
+        tools:layout="@layout/activity_list_nguoi_dung" />
+    <activity
+        android:id="@+id/nav_theloai"
+        android:name="com.example.quanlithuvien.ListTheLoaiActivity"
+        android:label="@string/menu_theloai"
+        tools:layout="@layout/activity_list_the_loai" />
+
+    <activity
+        android:id="@+id/nav_sach"
+        android:name="com.example.quanlithuvien.ListSachActivity"
+        android:label="@string/menu_sach"
+        tools:layout="@layout/activity_list_sach" />
+    <activity
+        android:id="@+id/nav_hoadon"
+        android:name="com.example.quanlithuvien.ListHoaDonActivity"
+        android:label="@string/meny_hoadon"
+        tools:layout="@layout/activity_list_hoa_don" />
+    <activity
+        android:id="@+id/nav_sachbanchay"
+        android:name="com.example.quanlithuvien.SachBanChayActivity"
+        android:label="@string/menu_sachbanchay"
+        tools:layout="@layout/activity_sach_ban_chay" />
+    <activity
+        android:id="@+id/nav_thongke"
+        android:name="com.example.quanlithuvien.ThongKeActitvity"
+        android:label="@string/menu_thongke"
+        tools:layout="@layout/activity_thong_ke_actitvity" />
+
+
+</navigation>
