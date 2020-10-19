@@ -40,13 +40,20 @@
         android:layout_alignParentRight="true"
         >
         <ImageView
+            android:layout_gravity="center"
+            android:layout_width="29dp"
+            android:layout_height="29dp"
+            android:id="@+id/ivDetailHD"
+            android:src="@drawable/information"/>
+        <ImageView
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:id="@+id/ivEditHoaDon"
             android:src="@drawable/edit"/>
         <ImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:id="@+id/ivDeleteHoaDon"
             android:layout_alignParentRight="true"
             android:src="@drawable/delete"/>

@@ -2,12 +2,16 @@ package com.example.quanlithuvien.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.example.quanlithuvien.R;
 import com.example.quanlithuvien.dao.HoaDonChiTietDAO;
@@ -16,10 +20,10 @@ import com.example.quanlithuvien.model.HoaDonChiTiet;
 import java.util.List;
 
 public class CartHoaDonAdapter extends BaseAdapter {
-    List<HoaDonChiTiet> list_hoadonCT;
-    public Activity context;
-    public LayoutInflater inflater;
-    HoaDonChiTietDAO hoaDonChiTietDAO;
+    private List<HoaDonChiTiet> list_hoadonCT;
+    private Activity context;
+    private LayoutInflater inflater;
+    private HoaDonChiTietDAO hoaDonChiTietDAO;
 
     public CartHoaDonAdapter(List<HoaDonChiTiet> list_hoadonCT, Activity context) {
         super();
@@ -50,6 +54,7 @@ public class CartHoaDonAdapter extends BaseAdapter {
         TextView txtGiaBia;
         TextView txtThanhTien;
         ImageView imgDelete;
+        TextView tvThanhTien;
     }
 
     @Override
@@ -64,23 +69,35 @@ public class CartHoaDonAdapter extends BaseAdapter {
             holder.txtGiaBia = view.findViewById(R.id.tv_giabia);
             holder.txtThanhTien = view.findViewById(R.id.tv_thanhtien);
             holder.imgDelete = view.findViewById(R.id.iv_delete);
-
+            holder.tvThanhTien = view.findViewById(R.id.tvThanhTien);
+            final ViewHolder finalHolder = holder;
             holder.imgDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    HoaDonChiTiet hd = list_hoadonCT.get(i);
                     hoaDonChiTietDAO.deleteHoaDonCT(String.valueOf(list_hoadonCT.get(i).getMaHDCT()));
-                    list_hoadonCT.remove(i);
-                    notifyDataSetChanged();
+                    list_hoadonCT.remove(hd);
+                    double thanhTien = 0;
+                    try {
+                        for (HoaDonChiTiet hd2 : list_hoadonCT) {
+                            thanhTien = thanhTien + hd2.getSoLuongMua() *
+                                    hd2.getSach().getGiaBia();
+                        }
+                        finalHolder.tvThanhTien.setText("Tổng tiền: " + thanhTien + " VNĐ");
+                    } catch (Exception ex) {
+                        Log.e("Error", ex.toString());
+                    }
+                    changeDataSet(list_hoadonCT);
                 }
             });
             view.setTag(holder);
         }
         holder = (ViewHolder)view.getTag();
         HoaDonChiTiet entry_hdct = list_hoadonCT.get(i);
-        holder.txtMaSach.setText("Ma sach:"+entry_hdct.getSach().getMaSach());
-        holder.txtSoLuong.setText("So luong:"+entry_hdct.getSoLuongMua());
-        holder.txtGiaBia.setText("Gia bia:"+entry_hdct.getSach().getGiaBia()+"VND");
-        holder.txtThanhTien.setText("Thanh tien:"+entry_hdct.getSoLuongMua()*entry_hdct.getSach().getGiaBia()+"VND");
+        holder.txtMaSach.setText("Mã sách:"+entry_hdct.getSach().getMaSach());
+        holder.txtSoLuong.setText("Số lượng:"+entry_hdct.getSoLuongMua());
+        holder.txtGiaBia.setText("Giá bìa:"+entry_hdct.getSach().getGiaBia()+"VND");
+        holder.txtThanhTien.setText("Thành Tiền:"+entry_hdct.getSoLuongMua()*entry_hdct.getSach().getGiaBia()+"VND");
         return view;
     }
 

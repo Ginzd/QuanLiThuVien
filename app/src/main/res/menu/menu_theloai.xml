@@ -2,6 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/item_searchTheLoai"
+        android:title="Seach"
+        app:actionViewClass="android.widget.SearchView"
+        android:icon="@drawable/ic_searchnew"
+        app:showAsAction="always"/>
+    <item
         android:id="@+id/itemThemTheLoai"
         android:icon="@drawable/add"
         app:showAsAction="always"

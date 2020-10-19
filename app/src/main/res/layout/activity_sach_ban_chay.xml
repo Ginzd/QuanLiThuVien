@@ -4,22 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/newColor"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:background="@drawable/wall1"
     tools:context=".SachBanChayActivity">
-    <TextView
-        android:paddingTop="7dp"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:text="Sách Đang Bán Chạy"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="10dp"
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/recycler_TopBook"/>
+        android:background="#D1BB7A"
+        app:tabIndicatorColor="#E91E63"
+        app:tabSelectedTextColor="#3F51B5" />
 
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

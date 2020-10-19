@@ -2,12 +2,10 @@ package com.example.quanlithuvien;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +23,7 @@ public class ListHoaDonActivity extends AppCompatActivity {
     ListView lvHoaDon;
     HoaDonAdapter adapter;
     HoaDonDAO hoaDonDAO;
+    HoaDonAdapter hoaDonAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,22 +38,33 @@ public class ListHoaDonActivity extends AppCompatActivity {
         }
         adapter = new HoaDonAdapter(list_hoadon,this);
         lvHoaDon.setAdapter(adapter);
-        lvHoaDon.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                HoaDon hd = (HoaDon) adapterView.getItemAtPosition(i);
-                Intent intent = new Intent(ListHoaDonActivity.this, ListHoaDonChiTietById.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("MAHOADON", hd.getMaHoaDon());
-                intent.putExtras(bundle);
-                startActivity(intent);
-            }
-        });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_cart,menu);
+        MenuItem menuItem = menu.findItem(R.id.item_searchHoaDon);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setQueryHint("Nhập mã hóa đơn");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                List<HoaDon> list_hoadon1 = new ArrayList<>();
+                for (HoaDon hoadon:list_hoadon){
+                    if (hoadon.getMaHoaDon().toUpperCase().contains(s.toUpperCase())){
+                        list_hoadon1.add(hoadon);
+                    }
+                }
+                hoaDonAdapter = new HoaDonAdapter(list_hoadon1,ListHoaDonActivity.this);
+                lvHoaDon.setAdapter(hoaDonAdapter);
+                return false;
+            }
+        });
         return true;
     }
 

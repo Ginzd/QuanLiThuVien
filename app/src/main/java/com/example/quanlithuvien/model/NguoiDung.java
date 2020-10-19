@@ -48,13 +48,4 @@ public class NguoiDung {
         this.hoTen = hoTen;
     }
 
-    @Override
-    public String toString() {
-        return "NguoiDung{" +
-                "userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", phone='" + phone + '\'' +
-                ", hoTen='" + hoTen + '\'' +
-                '}';
-    }
 }

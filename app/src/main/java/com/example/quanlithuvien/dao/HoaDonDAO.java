@@ -19,7 +19,7 @@ public class HoaDonDAO {
     private DataHelper dbHelper;
 
     public static final String TABLE_NAME = "HoaDon";
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     public HoaDonDAO(Context context){
         dbHelper = new DataHelper(context);
         db = dbHelper.getWritableDatabase();

@@ -4,100 +4,115 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/newColor"
     android:orientation="vertical"
-    android:background="@drawable/wall1"
     tools:context=".ThongKeActitvity">
+
     <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:src="@drawable/money"/>
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center"
+        android:src="@drawable/money" />
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:background="#A903A9F4"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/year" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Doanh Thu Trong Năm"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_thongkeNam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00000 $"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:background="#A903A9F4"
             android:gravity="center"
             android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp">
+
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/year"/>
-            <TextView
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Doanh Thu Trong Năm"/>
+                android:src="@drawable/day" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="00000 $"/>
+                android:text="Doanh Thu Hôm Nay"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_thongkeNgay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00000 $"
+                android:textStyle="bold" />
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
-    <LinearLayout
-        android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:gravity="center"
-        android:weightSum="2"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_weight="1"
-                android:gravity="center"
-                android:background="#A903A9F4"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/day"/>
-                <TextView
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Doanh Thu Hôm Nay"/>
-                <TextView
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="00000 $"/>
-            </LinearLayout>
 
 
-            <LinearLayout
-                android:gravity="center"
-                android:layout_weight="1"
-                android:layout_marginLeft="5dp"
-                android:background="#A903A9F4"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/month"/>
-                <TextView
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Doanh Thu Của Tháng"/>
-                <TextView
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="00000 $"/>
-            </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_weight="1"
+            android:background="#A903A9F4"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/month" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Doanh Thu Của Tháng"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_thongkeThang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00000 $"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

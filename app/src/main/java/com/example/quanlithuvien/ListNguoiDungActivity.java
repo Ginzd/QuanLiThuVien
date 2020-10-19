@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,10 +19,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListNguoiDungActivity extends AppCompatActivity {
-    Intent intent;
-    public static List<NguoiDung> dsNguoiDung = new ArrayList<>();
-    NguoiDungDao nguoiDungDao;
-    RecyclerView recyclerView;
+    private List<NguoiDung> dsNguoiDung = new ArrayList<>();
+    private NguoiDungDao nguoiDungDao;
+    private RecyclerView recyclerView;
+    private AdapterNguoiDung adapterNguoiDung;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,13 +35,28 @@ public class ListNguoiDungActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
-        AdapterNguoiDung adapterNguoiDung = new AdapterNguoiDung(ListNguoiDungActivity.this,dsNguoiDung);
+        adapterNguoiDung = new AdapterNguoiDung(ListNguoiDungActivity.this,dsNguoiDung);
         recyclerView.setAdapter(adapterNguoiDung);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_adduser,menu);
+        MenuItem searchItem = menu.findItem(R.id.item_searchUser);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setQueryHint("Nhập tên sách");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapterNguoiDung.getFilter().filter(newText);
+                return true;
+            }
+        });
         return true;
     }
 

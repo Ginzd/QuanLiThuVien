@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/wall1"
+    android:background="@drawable/loginbackgr"
     tools:context=".LoginActivity">
 
     <TextView
@@ -27,86 +27,100 @@
         android:layout_margin="25dp"
         android:background="#FFFFFF"
         android:orientation="vertical"
+        android:padding="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv111"
         app:layout_constraintVertical_bias="0.104"
         app:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteX="25dp"
-        android:padding="30dp">
+        tools:layout_editor_absoluteX="25dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:padding="5dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="5dp">
 
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/user2_login" />
 
-            <EditText
-                android:id="@+id/edtUserNameLogin"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Tài khoản"
-                android:textColor="#000"
-                android:backgroundTint="#000"/>
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtUserNameLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Tài khoản" />
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:padding="5dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="5dp">
 
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/lock2_login" />
 
-            <EditText
-                android:id="@+id/edtPassWordLogin"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:hint="Mật khẩu"
-                android:textColor="#000"
-                android:backgroundTint="#000"/>
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtPassWordLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Mật khẩu"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
+
         <CheckBox
-            android:checked="true"
-            android:layout_marginLeft="5dp"
+            android:id="@+id/chkRememberLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ghi nhớ tài khoản"
-            android:id="@+id/chkRememberLogin"/>
+            android:layout_marginLeft="30dp"
+            android:checked="true"
+            android:text="Ghi nhớ tài khoản" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="5dp"
             android:weightSum="2">
+
             <Button
-                android:layout_marginRight="5dp"
                 android:id="@+id/btnLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_button"
                 android:onClick="checkLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/background_button"
-                android:text="Đăng nhập"/>
+                android:text="Đăng nhập" />
+
             <Button
-                android:layout_marginLeft="5dp"
-                android:onClick="btnDangKi"
-                android:layout_weight="1"
-                android:background="@drawable/background_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Đăng kí"/>
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_button"
+                android:onClick="btnDangKi"
+                android:text="Đăng kí" />
         </LinearLayout>
 
     </LinearLayout>

@@ -4,10 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,10 +18,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListTheLoaiActivity extends AppCompatActivity {
-    public List<TheLoai> list_TheLoai = new ArrayList<>();
+    public static List<TheLoai> list_TheLoai = new ArrayList<>();
     ListView lvTheLoai;
     TheLoaiAdapter adapter;
     TheLoaiDAO theLoaiDAO;
+    TheLoaiAdapter theLoaiAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +40,29 @@ public class ListTheLoaiActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_theloai,menu);
+        MenuItem menuItem = menu.findItem(R.id.item_searchTheLoai);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setQueryHint("Nhập tên thể loại");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+
+                List<TheLoai> list_theLoai1 = new ArrayList<>();
+                for (TheLoai theloai:list_TheLoai){
+                    if (theloai.getTenTheLoai().toUpperCase().contains(s.toUpperCase())){
+                        list_theLoai1.add(theloai);
+                    }
+                }
+                theLoaiAdapter = new TheLoaiAdapter(list_theLoai1,ListTheLoaiActivity.this);
+                lvTheLoai.setAdapter(theLoaiAdapter);
+                return false;
+            }
+        });
         return true;
     }
 

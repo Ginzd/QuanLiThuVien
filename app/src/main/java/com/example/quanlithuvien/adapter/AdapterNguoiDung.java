@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,37 +16,38 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.quanlithuvien.NguoiDungActivity;
 import com.example.quanlithuvien.R;
 import com.example.quanlithuvien.UpdateUserActivity;
 import com.example.quanlithuvien.dao.NguoiDungDao;
 import com.example.quanlithuvien.model.NguoiDung;
-import com.example.quanlithuvien.model.TheLoai;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class AdapterNguoiDung extends RecyclerView.Adapter<AdapterNguoiDung.RecycleViewHolder>{
+public class AdapterNguoiDung extends RecyclerView.Adapter<AdapterNguoiDung.RecycleViewHolder> implements Filterable {
     private Context context;
     private List<NguoiDung> arrListNguoiDung;
+    private List<NguoiDung> arrListNguoiDungAll;
     private LayoutInflater inflater;
     private NguoiDungDao nguoiDungDao;
-    int m_index;
-    public AdapterNguoiDung() {
-    }
+    private int m_index;
 
     public AdapterNguoiDung(Context context, List<NguoiDung> arrListNguoiDung) {
         this.context = context;
         this.arrListNguoiDung = arrListNguoiDung;
-        inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.arrListNguoiDungAll = new ArrayList<>(arrListNguoiDung);
+        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         nguoiDungDao = new NguoiDungDao(context);
     }
 
     @NonNull
     @Override
     public RecycleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, final int index) {
-        View view = inflater.inflate(R.layout.item_nguoi_dung,null);
+        View view = inflater.inflate(R.layout.item_nguoi_dung, null);
         return new RecycleViewHolder(view);
     }
+
     //lay du lieu
     @Override
     public void onBindViewHolder(@NonNull RecycleViewHolder holder, final int position) {
@@ -57,11 +60,11 @@ public class AdapterNguoiDung extends RecyclerView.Adapter<AdapterNguoiDung.Recy
                 Context context = view.getContext();
                 Intent intent = new Intent(context, UpdateUserActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("userName_key",arrListNguoiDung.get(position).getUserName());
-                bundle.putString("password_key",arrListNguoiDung.get(position).getPassword());
-                bundle.putString("phone_key",arrListNguoiDung.get(position).getPhone());
-                bundle.putString("hoTen_key",arrListNguoiDung.get(position).getHoTen());
-                intent.putExtra("bundle",bundle);
+                bundle.putString("userName_key", arrListNguoiDung.get(position).getUserName());
+                bundle.putString("password_key", arrListNguoiDung.get(position).getPassword());
+                bundle.putString("phone_key", arrListNguoiDung.get(position).getPhone());
+                bundle.putString("hoTen_key", arrListNguoiDung.get(position).getHoTen());
+                intent.putExtra("bundle", bundle);
                 context.startActivity(intent);
 
             }
@@ -70,15 +73,11 @@ public class AdapterNguoiDung extends RecyclerView.Adapter<AdapterNguoiDung.Recy
             @Override
             public void onClick(View view) {
                 m_index = position;
-                try{
+                try {
                     showDialog("Bạn có chắc muốn xóa người dùng này ?");
-                } catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
-//                NguoiDung nd = arrListNguoiDung.get(position);
-//                nguoiDungDao.deleteUser(arrListNguoiDung.get(position).getUserName());
-//                arrListNguoiDung.remove(nd);
-//                notifyDataSetChanged();
             }
         });
     }
@@ -88,11 +87,44 @@ public class AdapterNguoiDung extends RecyclerView.Adapter<AdapterNguoiDung.Recy
         return arrListNguoiDung.size();
     }
 
-    public static class RecycleViewHolder extends RecyclerView.ViewHolder{
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+    Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+
+            List<NguoiDung> filterList = new ArrayList<>();
+            if (charSequence.toString().isEmpty()){
+               filterList.addAll(arrListNguoiDungAll);
+            }else {
+                for (NguoiDung nguoidung : arrListNguoiDungAll){
+                    if (nguoidung.getUserName().toUpperCase().contains(charSequence.toString().toUpperCase())){
+                        filterList.add(nguoidung);
+                    }
+                }
+            }
+            FilterResults filterResults = new FilterResults();
+            filterResults.values = filterList;
+
+            return filterResults;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            arrListNguoiDung.clear();
+            arrListNguoiDung.addAll((Collection<? extends NguoiDung>) filterResults.values);
+            notifyDataSetChanged();
+        }
+    };
+
+    public static class RecycleViewHolder extends RecyclerView.ViewHolder {
         ImageView ivIconNguoiDung;
-        TextView tvNameNguoiDung,tvPhoneNguoiDung;
+        TextView tvNameNguoiDung, tvPhoneNguoiDung;
         ImageView ivDeleteNguoiDung;
         ImageView ivEditNguoiDung;
+
         public RecycleViewHolder(@NonNull View itemView) {
             super(itemView);
             this.ivIconNguoiDung = itemView.findViewById(R.id.ivIconNguoiDung);
@@ -102,14 +134,15 @@ public class AdapterNguoiDung extends RecyclerView.Adapter<AdapterNguoiDung.Recy
             this.ivEditNguoiDung = itemView.findViewById(R.id.ivEditNguoiDung);
         }
     }
-    public void showDialog(final String phone) throws Exception {
+
+    public void showDialog(final String phone){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
         builder.setMessage("" + phone);
 
-        builder.setPositiveButton("Có", new DialogInterface.OnClickListener(){
+        builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which){
+            public void onClick(DialogInterface dialog, int which) {
 
                 NguoiDung nd = arrListNguoiDung.get(m_index);
                 nguoiDungDao.deleteUser(arrListNguoiDung.get(m_index).getUserName());
@@ -119,9 +152,9 @@ public class AdapterNguoiDung extends RecyclerView.Adapter<AdapterNguoiDung.Recy
             }
         });
 
-        builder.setNegativeButton("Không", new DialogInterface.OnClickListener(){
+        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which){
+            public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }
         });

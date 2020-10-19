@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/homebgr11"
+    android:background="@drawable/wall1"
     tools:context=".LoginActivity">
 
     <TextView
@@ -27,19 +27,19 @@
         android:layout_margin="25dp"
         android:background="#FFFFFF"
         android:orientation="vertical"
+        android:padding="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv111"
         app:layout_constraintVertical_bias="0.104"
         app:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteX="25dp"
-        android:padding="30dp">
+        tools:layout_editor_absoluteX="25dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:padding="5dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="5dp">
 
             <ImageView
                 android:layout_width="30dp"
@@ -50,17 +50,18 @@
                 android:id="@+id/edDangkiUserName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#000"
                 android:hint="Tên tài khoản"
-                android:textColor="#000"
-                android:backgroundTint="#000"/>
+                android:textColor="#000" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:padding="5dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="5dp">
 
             <ImageView
                 android:layout_width="30dp"
@@ -71,18 +72,19 @@
                 android:id="@+id/edDangkiMk"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
+                android:backgroundTint="#000"
                 android:hint="Mật khẩu"
-                android:textColor="#000"
-                android:backgroundTint="#000"/>
+                android:inputType="textPassword"
+                android:textColor="#000" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:padding="5dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="5dp">
 
             <ImageView
                 android:layout_width="30dp"
@@ -93,10 +95,10 @@
                 android:id="@+id/edDangkiReMK"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
+                android:backgroundTint="#000"
                 android:hint="Nhập lại mật khẩu"
-                android:textColor="#000"
-                android:backgroundTint="#000"/>
+                android:inputType="textPassword"
+                android:textColor="#000" />
 
         </LinearLayout>
 
@@ -108,21 +110,22 @@
             android:weightSum="10">
 
             <Button
-                android:layout_marginRight="5dp"
                 android:id="@+id/btnDangKiDiaglog"
-                android:layout_weight="5"
-                android:background="@drawable/background_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Đăng kí"/>
+                android:layout_marginRight="5dp"
+                android:layout_weight="5"
+                android:background="@drawable/background_button"
+                android:text="Đăng kí" />
+
             <Button
-                android:layout_marginLeft="5dp"
                 android:id="@+id/btnHuyDangKiDiaglog"
-                android:layout_weight="5"
-                android:background="@drawable/background_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hủy"/>
+                android:layout_marginLeft="5dp"
+                android:layout_weight="5"
+                android:background="@drawable/background_button"
+                android:text="Hủy" />
         </LinearLayout>
 
     </LinearLayout>

@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/wall1"
+    android:background="@color/newColor"
     tools:context=".HoaDonActivity">
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Thêm Hóa Đơn"
@@ -19,35 +19,54 @@
         android:layout_height="wrap_content"
         android:src="@drawable/food_cart"
         android:layout_marginBottom="34dp"/>
-        <EditText
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:background="@drawable/edittext_style"
-            android:ems="15"
-            android:hint="Ma Hoa Don"
-            android:id="@+id/edtMaHoaDon"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/text_input_layout_maHoaDon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mã Hóa Đơn"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edtMaHoaDon" />
+    </com.google.android.material.textfield.TextInputLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal">
-        <EditText
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:background="@drawable/edittext_style"
-            android:hint="DD-MM-YYYY"
-            android:ems="15"
-            android:id="@+id/edtNgayMua"
-            android:textSize="18dp"/>
-
-        <ImageView
-            android:layout_marginLeft="10dp"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/text_input_layout_ngayThang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ngày-Tháng-Năm"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtNgayMua" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <LinearLayout
             android:onClick="datePicker"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:src="@drawable/date" />
+            android:gravity="right"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp">
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_marginRight="15dp"
+                android:layout_width="56dp"
+                android:layout_height="46dp"
+                android:src="@drawable/date" />
+        </LinearLayout>
     </RelativeLayout>
     <LinearLayout
         android:layout_marginTop="20dp"

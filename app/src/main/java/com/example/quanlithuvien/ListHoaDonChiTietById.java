@@ -21,7 +21,7 @@ public class ListHoaDonChiTietById extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Hoa Don Chi Tiet");
+        setTitle("Hóa Đơn Chi Tiết");
         setContentView(R.layout.activity_list_hoa_don_chi_tiet_by_id);
         lvCartCT = findViewById(R.id.lvHoaDonCT);
         hoaDonChiTietDAO = new HoaDonChiTietDAO(ListHoaDonChiTietById.this);
@@ -30,8 +30,10 @@ public class ListHoaDonChiTietById extends AppCompatActivity {
         if (bundle != null){
             list_hdct = hoaDonChiTietDAO.getAllHDCTbyID(bundle.getString("MAHOADON"));
         }
+
         adapter = new CartHoaDonAdapter(list_hdct,this);
         lvCartCT.setAdapter(adapter);
         adapter.changeDataSet(list_hdct);
     }
+
 }

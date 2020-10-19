@@ -2,29 +2,20 @@ package com.example.quanlithuvien;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
 import android.view.Menu;
-import android.widget.Toast;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
+import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.core.view.GravityCompat;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-
-
+    Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        Toast.makeText(this, "Test", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -73,28 +63,32 @@ public void onBackPressed() {
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_nguoidung:
-                Intent intent1 = new Intent(MainActivity.this,ListNguoiDungActivity.class);
-                startActivity(intent1);
+                intent = new Intent(MainActivity.this,ListNguoiDungActivity.class);
+                startActivity(intent);
                 break;
             case R.id.nav_theloai:
-                 Intent intent2 = new Intent(MainActivity.this,ListTheLoaiActivity.class);
-                startActivity(intent2);
+                intent = new Intent(MainActivity.this,ListTheLoaiActivity.class);
+                startActivity(intent);
                 break;
             case R.id.nav_sach:
-                 Intent intent3 = new Intent(MainActivity.this,ListSachActivity.class);
-                startActivity(intent3);
+                intent = new Intent(MainActivity.this,ListSachActivity.class);
+                startActivity(intent);
                 break;
             case R.id.nav_hoadon:
-                Intent intent4 = new Intent(MainActivity.this,ListHoaDonActivity.class);
-                startActivity(intent4);
+                intent = new Intent(MainActivity.this,ListHoaDonActivity.class);
+                startActivity(intent);
                 break;
             case R.id.nav_sachbanchay:
-                Intent intent5 = new Intent(MainActivity.this,SachBanChayActivity.class);
-                startActivity(intent5);
+                intent = new Intent(MainActivity.this,SachBanChayActivity.class);
+                startActivity(intent);
                 break;
             case R.id.nav_thongke:
-                Intent intent6 = new Intent(MainActivity.this,ThongKeActitvity.class);
-                startActivity(intent6);
+                intent = new Intent(MainActivity.this,ThongKeActitvity.class);
+                startActivity(intent);
+                break;
+            case R.id.nav_about:
+                intent = new Intent(MainActivity.this,AboutUsActivity.class);
+                startActivity(intent);
                 break;
 
         }

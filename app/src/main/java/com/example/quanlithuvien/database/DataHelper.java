@@ -36,16 +36,16 @@ public class DataHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL("CREATE TABLE TheLoai (matheloai text primary key, tentheloai text, mota text, vitri int);");
         sqLiteDatabase.execSQL("INSERT INTO TheLoai(maTheLoai,tentheLoai,mota,vitri) VALUES ('TL1','Kiem Hiep','The Loai Kiem Hiep','VT1')");
-        sqLiteDatabase.execSQL("INSERT INTO TheLoai(maTheLoai,tentheLoai,mota,vitri) VALUES ('TL2','Tri Tue','The Loai Kiem Hiep','VT1')");
-        sqLiteDatabase.execSQL("INSERT INTO TheLoai(maTheLoai,tentheLoai,mota,vitri) VALUES ('TL3','Tinh Yeu','The Loai Kiem Hiep','VT1')");
-        sqLiteDatabase.execSQL("INSERT INTO TheLoai(maTheLoai,tentheLoai,mota,vitri) VALUES ('TL4','Tieu Thuyet','The Loai Kiem Hiep','VT1')");
+        sqLiteDatabase.execSQL("INSERT INTO TheLoai(maTheLoai,tentheLoai,mota,vitri) VALUES ('TL2','Tri Tue','The Loai Tri Tue','VT1')");
+        sqLiteDatabase.execSQL("INSERT INTO TheLoai(maTheLoai,tentheLoai,mota,vitri) VALUES ('TL3','Tinh Yeu','The Loai Tinh Yeu','VT1')");
+        sqLiteDatabase.execSQL("INSERT INTO TheLoai(maTheLoai,tentheLoai,mota,vitri) VALUES ('TL4','Tieu Thuyet','The Loai Tieu Thuyet','VT1')");
 
         sqLiteDatabase.execSQL("CREATE TABLE Sach (maSach text primary key, maTheLoai text, tensach text," +
                 "tacGia text, NXB text, giaBia double, soLuong number);");
-        sqLiteDatabase.execSQL("INSERT INTO Sach(maSach,maTheLoai,tensach,tacGia,NXB,giaBia,soLuong) VALUES ('MS1','22','HTML','2','5','22000 VND','11')");
-        sqLiteDatabase.execSQL("INSERT INTO Sach(maSach,maTheLoai,tensach,tacGia,NXB,giaBia,soLuong) VALUES ('MS2','22','HTML','2','5','42000 VND','17')");
-        sqLiteDatabase.execSQL("INSERT INTO Sach(maSach,maTheLoai,tensach,tacGia,NXB,giaBia,soLuong) VALUES ('MS3','22','HTML','2','5','52000 VND','21')");
-        sqLiteDatabase.execSQL("INSERT INTO Sach(maSach,maTheLoai,tensach,tacGia,NXB,giaBia,soLuong) VALUES ('MS4','22','HTML','2','5','62000 VND','45')");
+        sqLiteDatabase.execSQL("INSERT INTO Sach(maSach,maTheLoai,tensach,tacGia,NXB,giaBia,soLuong) VALUES ('MS1','TL1','Cafe cùng Tony','Tony Morning','5',22000,11)");
+        sqLiteDatabase.execSQL("INSERT INTO Sach(maSach,maTheLoai,tensach,tacGia,NXB,giaBia,soLuong) VALUES ('MS2','TL2','Tuổi trẻ đáng giá bao nhiêu','Rosie Nguyen','5',42000,17)");
+        sqLiteDatabase.execSQL("INSERT INTO Sach(maSach,maTheLoai,tensach,tacGia,NXB,giaBia,soLuong) VALUES ('MS3','TL3','Bạn Đắt Giá Bao Nhiêu?','Vãn Tình','5',52000,21)");
+        sqLiteDatabase.execSQL("INSERT INTO Sach(maSach,maTheLoai,tensach,tacGia,NXB,giaBia,soLuong) VALUES ('MS4','TL4','Tôi Tài Giỏi Và Bạn Cũng Thế','Adam Khoo','5',62000,45)");
 
         sqLiteDatabase.execSQL("CREATE TABLE HoaDon (maHoaDon text primary key, ngayMua date);");
         sqLiteDatabase.execSQL("INSERT INTO HoaDon(maHoaDon,ngayMua) VALUES ('HD1','2020-05-05')");
@@ -54,8 +54,6 @@ public class DataHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("INSERT INTO HoaDon(maHoaDon,ngayMua) VALUES ('HD4','2020-05-05')");
 
         sqLiteDatabase.execSQL("CREATE TABLE HoaDonChiTiet (maHDCT integer primary key autoincrement, maHoaDon text NOT NULL, maSach text NOT NULL, soLuong integer);");
-        //Làm theo mở danh sách học sinh trong lớp bên android nâng cao
-//        sqLiteDatabase.execSQL(HoaDonChiTietDAO.SQL_HOADONCT);
     }
 
     @Override
@@ -67,45 +65,48 @@ public class DataHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + HoaDonChiTietDAO.TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS users");
     }
-    public boolean insertData(String userName, String passWord){
+
+    public boolean insertData(String userName, String passWord) {
         SQLiteDatabase myDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("username",userName);
-        contentValues.put("password",passWord);
-        long result = myDB.insert("users",null,contentValues);
-        if (result == -1){
+        contentValues.put("username", userName);
+        contentValues.put("password", passWord);
+        long result = myDB.insert("users", null, contentValues);
+        if (result == -1) {
             return false;
-        }else {
+        } else {
             return true;
         }
     }
-    public Boolean checkuserName(String userName){
+
+    public Boolean checkuserName(String userName) {
         SQLiteDatabase myDB = this.getWritableDatabase();
-        Cursor cursor = myDB.rawQuery("Select * from users where username = ?",new String[]{userName});
-        if (cursor.getCount() >0){
+        Cursor cursor = myDB.rawQuery("Select * from users where username = ?", new String[]{userName});
+        if (cursor.getCount() > 0) {
             return true;
-        }else {
-            return false;
-        }
-    }
-    public Boolean checkUserPassWord(String userName, String passWord){
-        SQLiteDatabase myDB = this.getWritableDatabase();
-        Cursor cursor = myDB.rawQuery("Select * from users where username = ? and password = ?",new String[]{userName,passWord});
-        if (cursor.getCount() >0){
-            return true;
-        }else {
+        } else {
             return false;
         }
     }
 
-    public boolean updatePassword(String userName, String passWord){
+    public Boolean checkUserPassWord(String userName, String passWord) {
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        Cursor cursor = myDB.rawQuery("Select * from users where username = ? and password = ?", new String[]{userName, passWord});
+        if (cursor.getCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean updatePassword(String userName, String passWord) {
         SQLiteDatabase myDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("password",passWord);
-        long result = myDB.update("users",contentValues,"userName=?",new String[]{userName});
-        if (result == -1){
+        contentValues.put("password", passWord);
+        long result = myDB.update("users", contentValues, "userName=?", new String[]{userName});
+        if (result == -1) {
             return false;
-        }else {
+        } else {
             return true;
         }
     }

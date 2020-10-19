@@ -1,10 +1,5 @@
 package com.example.quanlithuvien;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -13,12 +8,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+
 import com.example.quanlithuvien.dao.HoaDonDAO;
-import com.example.quanlithuvien.dao.TheLoaiDAO;
 import com.example.quanlithuvien.model.HoaDon;
-import com.example.quanlithuvien.model.TheLoai;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -26,9 +26,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class UpdateHoaDonActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
-    EditText edtNgayMua,edtMaHoaDon;
+    EditText edtNgayMua;
+    TextView edtMaHoaDon;
     HoaDonDAO hoaDonDAO;
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    TextInputLayout textInputNgayThang1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,11 +38,12 @@ public class UpdateHoaDonActivity extends AppCompatActivity implements DatePicke
         setTitle("Hóa Đơn");
         edtNgayMua = findViewById(R.id.edtNgayMua1);
         edtMaHoaDon = findViewById(R.id.edtMaHoaDon1);
+        textInputNgayThang1 =findViewById(R.id.text_input_layout_ngayThang1);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if (bundle != null){
             edtMaHoaDon.setText(bundle.getString("MAHOADON"));
-//            edtNgayMua.setText(bundle.getString("NGAYMUA"));
+            edtNgayMua.setText(bundle.getString("NGAYMUA"));
         }
     }
     @Override
@@ -73,13 +76,35 @@ public class UpdateHoaDonActivity extends AppCompatActivity implements DatePicke
         fragment.show(getSupportFragmentManager(),tag);//
     }
     public void updateHoaDon(View view) throws ParseException {
+        if (!validateNgayThang()){
+            return;
+        }
         hoaDonDAO = new HoaDonDAO(this);
         HoaDon hd = new HoaDon(edtMaHoaDon.getText().toString(),dateFormat.parse(edtNgayMua.getText().toString()));
         if (hoaDonDAO.updateHoaDon(hd) ==1){
-            Toast.makeText(this, "Sucess", Toast.LENGTH_SHORT).show();
-            finish();
+            Toast.makeText(this, "Cập nhật hóa đơn thành công", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(UpdateHoaDonActivity.this,HoaDonChiTietActivity.class);
+            Bundle b = new Bundle();
+            b.putString("MAHOADON",edtMaHoaDon.getText().toString());
+            intent.putExtras(b);
+            startActivity(intent);
         }
     }
     public void huyUpdateHoaDon(View view) {
+        finish();
+    }
+
+    private boolean validateNgayThang() {
+        String val = textInputNgayThang1.getEditText().getText().toString().trim();
+
+
+        if (val.isEmpty()) {
+            textInputNgayThang1.setError("Ngày tháng không để trống !");
+            return false;
+        } else {
+            textInputNgayThang1.setError(null);
+            textInputNgayThang1.setErrorEnabled(false);
+            return true;
+        }
     }
 }

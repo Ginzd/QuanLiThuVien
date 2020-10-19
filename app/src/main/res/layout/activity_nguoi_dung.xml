@@ -4,84 +4,111 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/newColor"
     android:gravity="center"
-    android:background="@drawable/wall1"
+    android:orientation="vertical"
     tools:context=".NguoiDungActivity">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Thêm Người Dùng"
-        android:textStyle="bold"
-        android:textSize="24dp"/>
+        android:textSize="24dp"
+        android:textStyle="bold" />
+
     <ImageView
-        android:layout_marginTop="20dp"
         android:layout_width="200dp"
         android:layout_height="150dp"
-        android:src="@drawable/usermanage"
-        android:layout_gravity="center"/>
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:ems="15"
-        android:gravity="center"
-        android:background="@drawable/edittext_style"
-        android:hint="Tên tài khoản"
-        android:textColor="#000"
-        android:id="@+id/edtUserNameNguoiDung"
-        android:src="@drawable/edittext_style"
-        android:layout_marginTop="20dp"/>
-    <EditText
-        android:textColor="#000"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:ems="15"
-        android:gravity="center"
-        android:background="@drawable/edittext_style"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/usermanage" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_tenUser"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:hint="Tên tài khoản">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtUserNameNguoiDung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_matkhauUser"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:hint="Mật khẩu"
         android:inputType="textPassword"
-        android:id="@+id/edtPassNguoiDung"
-        android:layout_marginTop="20dp"/>
-    <EditText
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:ems="15"
-        android:textColor="#000"
-        android:background="@drawable/edittext_style"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtPassNguoiDung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_sdtUser"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:hint="Số điện thoại"
-        android:id="@+id/edtPhoneNguoiDung"
-        android:layout_marginTop="20dp"/>
-    <EditText
-        android:textColor="#000"
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:ems="15"
-        android:background="@drawable/edittext_style"
-        android:hint="Họ và Tên"
-        android:id="@+id/edtFullNameNguoiDung"
-        android:layout_marginTop="20dp"/>
+        app:counterEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtPhoneNguoiDung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_fullnameUser"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:hint="Họ và Tên">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtFullNameNguoiDung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <LinearLayout
-        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
+
         <Button
+            android:id="@+id/btnAddNguoiDung"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:id="@+id/btnAddNguoiDung"
-            android:onClick="addNguoiDung"
             android:background="@drawable/background_button"
-            android:text="Thêm"/>
+            android:onClick="addNguoiDung"
+            android:text="Thêm" />
+
         <Button
+            android:id="@+id/btnShowUser"
             android:layout_width="150dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:background="@drawable/background_button"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnShowUser"
             android:onClick="ShowUsers"
-            android:text="Hủy"/>
+            android:text="Hủy" />
     </LinearLayout>
 
 </LinearLayout>

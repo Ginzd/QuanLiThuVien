@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
+    android:background="@color/newColor"
     android:orientation="vertical"
+    android:padding="8dp"
     tools:context=".ListTheLoaiActivity">
+
     <ListView
+        android:id="@+id/lvTheLoai"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/lvTheLoai"/>
+        android:layout_height="match_parent" />
 </LinearLayout>

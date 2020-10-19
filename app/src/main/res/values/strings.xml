@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Quản lí thư viện</string>
+    <string name="app_name">Quản Lí Thư Viện</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Quản lí sách</string>
@@ -14,4 +14,24 @@
     <string name="menu_sach">Sách</string>
     <string name="menu_sachbanchay">Sách Bán Chạy</string>
     <string name="menu_thongke">Thống Kê</string>
+    <string name="menu_about">Thông tin</string>
+
+    <string-array name="spn_items">
+        <item>Tháng 1</item>
+        <item>Tháng 2</item>
+        <item>Tháng 3</item>
+        <item>Tháng 4</item>
+        <item>Tháng 5</item>
+        <item>Tháng 6</item>
+        <item>Tháng 7</item>
+        <item>Tháng 8</item>
+        <item>Tháng 9</item>
+        <item>Tháng 10</item>
+        <item>Tháng 11</item>
+        <item>Tháng 12</item>
+    </string-array>
+
+    <string name="topngay_fragment">Hello blank fragment</string>
+    <string name="topthang_fragment">Hello blank fragment</string>
+    <string name="topnam_fragment">Hello blank fragment</string>
 </resources>

@@ -50,6 +50,6 @@ public class TheLoai {
 
     @Override
     public String toString() {
-        return maTheLoai + "|" + tenTheLoai;
+        return "Thể Loại :" + tenTheLoai;
     }
 }

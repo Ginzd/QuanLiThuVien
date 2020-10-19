@@ -4,82 +4,105 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/newColor"
     android:gravity="center"
-    android:background="@drawable/wall1"
+    android:orientation="vertical"
     tools:context=".TheLoaiActivity">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
+        android:text="Thêm Thể Loại"
         android:textSize="24dp"
-        android:text="Thêm Thể Loại"/>
+        android:textStyle="bold" />
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/bookself"/>
-    <EditText
-        android:id="@+id/edtMaTheLoai"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:gravity="center"
-        android:hint="Mã thể loại"
-        android:background="@drawable/edittext_style"
-        android:ems="15"/>
+        android:src="@drawable/bookself" />
 
-    <EditText
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:id="@+id/edtTenTheLoai"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:hint="Tên thể loại"
-        android:background="@drawable/edittext_style"
-        android:ems="15"
-         />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_maTheLoai"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:hint="Mã thể loại">
 
-    <EditText
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:id="@+id/edtMoTa"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:hint="Mô tả"
-        android:background="@drawable/edittext_style"
-        android:ems="15" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtMaTheLoai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:gravity="center"
-        android:hint="Vị Trí"
-        android:layout_marginTop="10dp"
-        android:id="@+id/edtViTri"
-        android:background="@drawable/edittext_style"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:ems="15" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_tenTheLoai"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:hint="Tên thể loại">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtTenTheLoai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_moTa"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:hint="Mô tả">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtMoTa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_viTri"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:hint="Vị Trí">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtViTri"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
-        android:paddingTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingTop="20dp">
+
         <Button
-            android:layout_marginRight="5dp"
             android:id="@+id/button4"
             android:layout_width="150dp"
-            android:onClick="AddTheLoai"
-            android:background="@drawable/background_button"
             android:layout_height="wrap_content"
-            android:text="Thêm"
-            />
+            android:layout_marginRight="5dp"
+            android:background="@drawable/background_button"
+            android:onClick="AddTheLoai"
+            android:text="Thêm" />
+
         <Button
-            android:layout_marginLeft="5dp"
             android:id="@+id/btnShowTheLoai"
             android:layout_width="150dp"
-            android:onClick="ShowTheLoai"
-            android:background="@drawable/background_button"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/background_button"
+            android:onClick="ShowTheLoai"
             android:text="Hủy" />
 
     </LinearLayout>

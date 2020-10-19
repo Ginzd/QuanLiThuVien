@@ -4,80 +4,112 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/newColor"
     android:gravity="center"
-    android:background="@drawable/wall1"
+    android:orientation="vertical"
     tools:context=".UpdateTheLoaiActivity">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Cập Nhật Thể Loại"
         android:textSize="24dp"
-        android:textStyle="bold"
-        android:text="Cập Nhật Thể Loại"/>
+        android:textStyle="bold" />
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/bookself"/>
-    <EditText
-        android:id="@+id/edtMaTheLoai1"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:gravity="center"
-        android:hint="Mã thể loại"
-        android:background="@drawable/edittext_style"
-        android:ems="15"/>
+        android:src="@drawable/bookself" />
 
-    <EditText
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:id="@+id/edtTenTheLoai1"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:hint="Tên thể loại"
-        android:background="@drawable/edittext_style"
-        android:ems="15"
-        />
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
 
-    <EditText
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:id="@+id/edtMoTa1"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:hint="Mô tả"
-        android:background="@drawable/edittext_style"
-        android:ems="15" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mã thể loại hiện tại :"
+            android:textStyle="bold" />
 
-    <EditText
-        android:gravity="center"
-        android:hint="Vị Trí"
-        android:layout_marginTop="10dp"
-        android:id="@+id/edtViTri1"
-        android:background="@drawable/edittext_style"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:ems="15" />
+        <TextView
+            android:id="@+id/edtMaTheLoai1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_tenTheLoai1"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:hint="Tên thể loại">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtTenTheLoai1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_moTa1"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:hint="Mô tả">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtMoTa1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_viTri1"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:hint="Vị Trí">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtViTri1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <LinearLayout
-        android:paddingTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingTop="20dp">
+
         <Button
-            android:layout_marginRight="5dp"
             android:id="@+id/button4"
             android:layout_width="150dp"
-            android:onClick="UpdateTheLoai"
             android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
             android:background="@drawable/background_button"
-            android:text="Cập Nhật"
-            />
+            android:onClick="UpdateTheLoai"
+            android:text="Cập Nhật" />
+
         <Button
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/background_button"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/background_button"
             android:onClick="huyUpdate"
             android:text="Hủy" />
 

@@ -5,16 +5,28 @@
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/bookicon2"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UpdateHoaDonActivity"></activity>
-        <activity android:name=".UpdateSachActivity" />
-        <activity android:name=".UpdateTheLoaiActivity" />
-        <activity android:name=".UpdateUserActivity" />
+
+        <activity
+            android:name=".AboutUsActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".UpdateHoaDonActivity"
+            android:parentActivityName=".ListHoaDonActivity" />
+        <activity
+            android:name=".UpdateSachActivity"
+            android:parentActivityName=".ListSachActivity" />
+        <activity
+            android:name=".UpdateTheLoaiActivity"
+            android:parentActivityName=".ListTheLoaiActivity" />
+        <activity
+            android:name=".UpdateUserActivity"
+            android:parentActivityName=".ListNguoiDungActivity" />
         <activity
             android:name=".ThongKeActitvity"
             android:parentActivityName=".MainActivity" />
@@ -34,8 +46,12 @@
         <activity
             android:name=".ListTheLoaiActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".HoaDonChiTietActivity"/>
-        <activity android:name=".ListHoaDonChiTietById"/>
+        <activity
+            android:name=".HoaDonChiTietActivity"
+            android:parentActivityName=".ListHoaDonActivity" />
+        <activity
+            android:name=".ListHoaDonChiTietById"
+            android:parentActivityName=".ListHoaDonActivity" />
         <activity
             android:name=".ListSachActivity"
             android:parentActivityName=".MainActivity" />

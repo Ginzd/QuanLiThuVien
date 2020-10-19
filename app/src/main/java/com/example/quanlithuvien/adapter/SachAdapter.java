@@ -1,7 +1,6 @@
 package com.example.quanlithuvien.adapter;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,26 +8,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
-import com.example.quanlithuvien.LoginActivity;
 import com.example.quanlithuvien.R;
 import com.example.quanlithuvien.UpdateSachActivity;
 import com.example.quanlithuvien.dao.SachDAO;
 import com.example.quanlithuvien.model.Sach;
-import com.example.quanlithuvien.model.TheLoai;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SachAdapter extends BaseAdapter{
@@ -63,7 +53,7 @@ public class SachAdapter extends BaseAdapter{
         ImageView img;
         TextView txtBookName;
         TextView txtBookPrice;
-        TextView txtBookSoLuong;
+        TextView txtTen;
         ImageView imgDelete;
         ImageView imgEdit;
     }
@@ -77,7 +67,7 @@ public class SachAdapter extends BaseAdapter{
             holder.img = view.findViewById(R.id.ivIconBook);
             holder.txtBookName = view.findViewById(R.id.tvBookName);
             holder.txtBookPrice = view.findViewById(R.id.tvBookPrice);
-            holder.txtBookSoLuong = view.findViewById(R.id.tvSoLuongBook);
+            holder.txtTen = view.findViewById(R.id.tvTenBook1);
             holder.imgDelete = view.findViewById(R.id.ivDeleteBook);
             holder.imgEdit = view.findViewById(R.id.ivEditSach);
             holder.imgEdit.setOnClickListener(new View.OnClickListener() {
@@ -113,9 +103,9 @@ public class SachAdapter extends BaseAdapter{
         holder = (ViewHolder)view.getTag();
         Sach entry_sach = list_sach.get(i);
         holder.img.setImageResource(R.drawable.bookicon1);
-        holder.txtBookName.setText("Ma sach:"+entry_sach.getMaSach());
-        holder.txtBookSoLuong.setText("So Luong:"+entry_sach.getSoLuong());
-        holder.txtBookPrice.setText("Gia:"+entry_sach.getGiaBia());
+        holder.txtBookName.setText("Mã sách:"+entry_sach.getMaSach());
+        holder.txtTen.setText("Tên sách:"+entry_sach.getTenSach());
+        holder.txtBookPrice.setText("Giá"+entry_sach.getGiaBia());
         return view;
     }
 
@@ -131,7 +121,7 @@ public class SachAdapter extends BaseAdapter{
     public void showDialog(final String text) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
-        builder.setMessage("Xac Nhan: " + text);
+        builder.setMessage("" + text);
 
         builder.setPositiveButton("Có", new DialogInterface.OnClickListener(){
             @Override

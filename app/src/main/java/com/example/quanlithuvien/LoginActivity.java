@@ -46,6 +46,10 @@ public class LoginActivity extends AppCompatActivity {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_dangki);
+
+        int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.90);
+        int height = (int) (getResources().getDisplayMetrics().heightPixels * 0.90);
+        dialog.getWindow().setLayout(width,height);
         final EditText edDangkiUser = dialog.findViewById(R.id.edDangkiUserName);
         final EditText edDangkiMK = dialog.findViewById(R.id.edDangkiMk);
         final EditText edDangkiReMK = dialog.findViewById(R.id.edDangkiReMK);
@@ -105,7 +109,6 @@ public class LoginActivity extends AppCompatActivity {
             Boolean checkuserPass = my_db.checkUserPassWord(user,pass);
             if (checkuserPass == true){
                 Toast.makeText(this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {

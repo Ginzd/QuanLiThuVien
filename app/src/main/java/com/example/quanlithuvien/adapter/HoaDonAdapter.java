@@ -9,19 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
+import com.example.quanlithuvien.ListHoaDonChiTietById;
 import com.example.quanlithuvien.R;
 import com.example.quanlithuvien.UpdateHoaDonActivity;
 import com.example.quanlithuvien.dao.HoaDonDAO;
 import com.example.quanlithuvien.model.HoaDon;
-import com.example.quanlithuvien.model.TheLoai;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -62,6 +59,7 @@ public class HoaDonAdapter extends BaseAdapter {
         TextView txtMaHoaDon;
         TextView txtNgayMua;
         ImageView imgDelete;
+        ImageView imgDetailHd;
         ImageView imgEdit;
     }
 
@@ -75,7 +73,19 @@ public class HoaDonAdapter extends BaseAdapter {
             holder.txtMaHoaDon = view.findViewById(R.id.tv_maHoaDon);
             holder.txtNgayMua = view.findViewById(R.id.tvNgayMua);
             holder.imgDelete = view.findViewById(R.id.ivDeleteHoaDon);
+            holder.imgDetailHd = view.findViewById(R.id.ivDetailHD);
             holder.imgEdit = view.findViewById(R.id.ivEditHoaDon);
+            holder.imgDetailHd.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    HoaDon hd = hoaDonList.get(i);
+                    Intent intent = new Intent(context, ListHoaDonChiTietById.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("MAHOADON", hd.getMaHoaDon());
+                    intent.putExtras(bundle);
+                    context.startActivity(intent);
+                }
+            });
             holder.imgDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -93,7 +103,7 @@ public class HoaDonAdapter extends BaseAdapter {
                     Intent intent = new Intent(context, UpdateHoaDonActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putString("MAHOADON", hoaDonList.get(i).getMaHoaDon());
-//                    bundle.putString("NGAYMUA", String.valueOf(hoaDonList.get(i).getNgayMua()));
+                    bundle.putString("NGAYMUA", dateFormat.format(hoaDonList.get(i).getNgayMua()));
                     intent.putExtras(bundle);
                     context.startActivity(intent);
                 }

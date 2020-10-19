@@ -80,6 +80,6 @@ public class Sach {
 
     @Override
     public String toString() {
-        return maSach + "|" + tenSach;
+        return "Tên sách :" + tenSach;
     }
 }

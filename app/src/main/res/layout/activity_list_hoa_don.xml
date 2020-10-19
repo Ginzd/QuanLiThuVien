@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/newColor"
     android:orientation="vertical"
     android:padding="8dp"
     tools:context=".ListHoaDonActivity">
+
     <ListView
+        android:id="@+id/lvHoaDon"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/lvHoaDon"/>
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

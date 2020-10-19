@@ -4,92 +4,117 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/newColor"
     android:orientation="vertical"
-    android:gravity="center"
     tools:context=".HoaDonChiTietActivity">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hóa Đơn Chi Tiết"
-        android:textSize="24dp"
-        android:textStyle="bold"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mã Hóa Đơn Hiện Tại"/>
-    <EditText
-        android:gravity="center"
-        android:id="@+id/edtMaHoaDonCT"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:background="@drawable/edittext_style"
-        android:hint="Mã Hóa Đơn Hiện Tại"
-        android:ems="15"/>
-    <Spinner
-        android:background="@drawable/style_spinner"
-        android:id="@+id/spnMaSachCT"
-        android:layout_width="320dp"
-        android:layout_marginTop="10dp"
-        android:layout_height="wrap_content" />
 
-    <EditText
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:id="@+id/edtSoLuongMuaCT"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:background="@drawable/edittext_style"
-        android:hint="Số Lượng Sách Cần Mua"
-        android:ems="15"/>
     <LinearLayout
-        android:paddingTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:text="Hóa Đơn Chi Tiết"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mã Hóa Đơn Hiện Tại : "
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/edtMaHoaDonCT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="99"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/spnMaSachCT"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/style_spinner" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_layout_soLuongSachMua"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:hint="Số Lượng Sách Cần Mua">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtSoLuongMuaCT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/background_button"
+        android:onClick="AddHoaDonCT"
+        android:text="Thêm" />
+
+
+    <ListView
+        android:id="@+id/lvCartHoaDon"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/tvThanhTien"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tổng Tiền : 0 VNĐ"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
         <Button
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:background="@drawable/background_button"
-            android:onClick="AddHoaDonCT"
-            android:text="Thêm"/>
-        <Button
-            android:layout_marginLeft="10dp"
-            android:layout_width="150dp"
             android:onClick="thanhToanHoaDon"
-            android:layout_height="wrap_content"
-            android:background="@drawable/background_button"
-            android:text="Thanh Toan"/>
+            android:text="Thanh Toán" />
 
     </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:text="Thanh Tien"
-        android:id="@+id/tvThanhTien"/>
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/lvCartHoaDon"/>
-    <!--    <LinearLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:orientation="horizontal"-->
-    <!--        android:weightSum="3">-->
-    <!--        <Button-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_weight="1"-->
-    <!--            android:text="ADD"-->
-    <!--            android:onClick="AddHoaDonCT"/>-->
-    <!--        <Button-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_weight="1"-->
-    <!--            android:text="Update"-->
-    <!--            android:onClick="UpdateHoaDonCT"/>-->
-
-    <!--    </LinearLayout>-->
 
 </LinearLayout>

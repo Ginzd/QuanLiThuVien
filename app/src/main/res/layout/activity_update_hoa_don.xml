@@ -4,71 +4,106 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/newColor"
     android:gravity="center"
-    android:background="@drawable/wall1"
+    android:orientation="vertical"
     tools:context=".UpdateHoaDonActivity">
-    <EditText
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cập Nhật Hóa Đơn"
         android:textSize="24dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/food_cart"
-        android:layout_marginBottom="34dp"/>
-    <EditText
-        android:layout_marginBottom="10dp"
-        android:gravity="center"
+        android:layout_marginBottom="34dp"
+        android:src="@drawable/food_cart" />
+
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:background="@drawable/edittext_style"
-        android:ems="15"
-        android:hint="Mã Hóa Đơn"
-        android:id="@+id/edtMaHoaDon1"/>
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mã thể loại hiện tại :"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/edtMaHoaDon1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textStyle="bold" />
+    </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal">
-        <EditText
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:background="@drawable/edittext_style"
-            android:hint="DD-MM-YYYY"
-            android:ems="15"
-            android:id="@+id/edtNgayMua1"
-            android:textSize="18dp"/>
 
-        <ImageView
-            android:layout_marginLeft="10dp"
-            android:onClick="datePicker2"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:src="@drawable/date" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_layout_ngayThang1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:hint="Ngày-Tháng-Năm">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtNgayMua1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:gravity="right"
+            android:onClick="datePicker2">
+
+            <ImageView
+                android:layout_width="56dp"
+                android:layout_height="46dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/date" />
+        </LinearLayout>
     </RelativeLayout>
+
     <LinearLayout
-        android:gravity="center"
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
         android:orientation="horizontal">
+
         <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:background="@drawable/background_button"
             android:onClick="updateHoaDon"
-            android:background="@drawable/background_button"
             android:text="Cập nhật" />
+
         <Button
-            android:layout_marginEnd="5dp"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:onClick="huyUpdateHoaDon"
+            android:layout_marginEnd="5dp"
             android:background="@drawable/background_button"
+            android:onClick="huyUpdateHoaDon"
             android:text="Hủy" />
     </LinearLayout>
 

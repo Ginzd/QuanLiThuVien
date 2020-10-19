@@ -4,10 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/homebgr11"
     android:orientation="vertical"
     tools:context=".SettingActivity">
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,6 +20,7 @@
             android:src="@drawable/worker" />
 
         <TextView
+            android:id="@+id/tvNameUsuer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -29,28 +28,31 @@
             android:text="Admin"
             android:textStyle="bold" />
 
-
     </LinearLayout>
+
     <LinearLayout
-        android:background="#000"
         android:layout_width="match_parent"
-        android:layout_marginRight="30dp"
+        android:layout_height="1dp"
         android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_marginBottom="20dp"
-        android:layout_height="1dp"/>
+        android:background="#000" />
+
     <TextView
-        android:textStyle="bold"
-        android:textSize="30dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Thiết Lập"/>
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:text="Thiết Lập"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="horizontal">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -58,31 +60,34 @@
             android:orientation="vertical">
 
             <ImageView
+                android:layout_width="60dp"
+                android:layout_height="80dp"
                 android:onClick="clickDoiMK"
-                android:layout_width="60dp"
-                android:layout_height="80dp"
-                android:src="@drawable/password"/>
+                android:src="@drawable/password" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Đổi mật khẩu"/>
+                android:text="Đổi mật khẩu" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:paddingLeft="50dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="50dp">
 
             <ImageView
-                android:onClick="clickDangXuat"
                 android:layout_width="60dp"
                 android:layout_height="80dp"
-                android:src="@drawable/logout"/>
+                android:onClick="clickDangXuat"
+                android:src="@drawable/logout" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Đăng xuất"/>
+                android:text="Đăng xuất" />
 
         </LinearLayout>
     </LinearLayout>

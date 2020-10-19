@@ -10,11 +10,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.quanlithuvien.database.DataHelper;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class ChangePasswordActivity extends AppCompatActivity {
     EditText userName,edMKC,edMKM,edReMKM;
     Button btnDoiMK,btnHuyMK;
     DataHelper db;
+    TextInputLayout input_passNew,inputRePassNew;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,8 @@ public class ChangePasswordActivity extends AppCompatActivity {
         btnDoiMK = findViewById(R.id.btnDoiMk);
         btnHuyMK = findViewById(R.id.btnHuyChangeMK);
         db = new DataHelper(this);
+       input_passNew = findViewById(R.id.text_input_newPassChange);
+       inputRePassNew = findViewById(R.id.text_input_reNewPassChange);
 
         Intent intent = getIntent();
         userName.setText(intent.getStringExtra("username"));
@@ -48,9 +52,11 @@ public class ChangePasswordActivity extends AppCompatActivity {
                         finish();
                     }
                 }else if (!passMoi.equals(rePassMoi)){
-                    Toast.makeText(ChangePasswordActivity.this, "Mật khẩu mới chưa trùng khớp", Toast.LENGTH_SHORT).show();
+                    inputRePassNew.setError("Mật khẩu mới chưa trùng khớp !");
                 }
                 else {
+                    inputRePassNew.setError(null);
+                    inputRePassNew.setErrorEnabled(false);
                     Toast.makeText(ChangePasswordActivity.this, "Sai tên tài khoản hoặc mật khẩu", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -62,4 +68,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/homebgr12"
+    android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
 
     <ScrollView
@@ -28,12 +28,16 @@
                     android:layout_height="150dp"
                     android:gravity="center"
                     android:orientation="vertical">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:textSize="25dp"
-                        android:text="Quản Lí Sách" />
+                    <!--                    <TextView-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:textStyle="bold"-->
+                    <!--                        android:textSize="25dp"-->
+                    <!--                        android:text="Quản Lí Sách" />-->
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/booklogo" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -51,16 +55,16 @@
                         android:orientation="horizontal">
 
                         <androidx.cardview.widget.CardView
-                            app:cardCornerRadius="15dp"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_marginRight="10dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            app:cardCornerRadius="15dp">
 
                             <RelativeLayout
-                                android:background="@drawable/background_item"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                                android:layout_height="match_parent"
+                                android:background="@drawable/background_item">
 
                                 <ImageView
                                     android:id="@+id/imgUser"
@@ -77,8 +81,8 @@
                                     android:layout_marginTop="10dp"
                                     android:layout_marginBottom="10dp"
                                     android:text="Người Dùng"
-                                    android:textStyle="bold"
-                                    android:textSize="16sp" />
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
 
                                 <Button
                                     android:id="@+id/btnUser"
@@ -89,22 +93,22 @@
                         </androidx.cardview.widget.CardView>
 
                         <androidx.cardview.widget.CardView
-                            app:cardCornerRadius="15dp"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            app:cardCornerRadius="15dp">
 
                             <RelativeLayout
-                                android:background="@drawable/background_item"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                                android:layout_height="match_parent"
+                                android:background="@drawable/background_item">
 
                                 <ImageView
                                     android:id="@+id/imgTheLoai"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_centerInParent="true"
-                                    android:src="@drawable/cateicon" />
+                                    android:src="@drawable/bookshelf" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -114,8 +118,8 @@
                                     android:layout_marginTop="10dp"
                                     android:layout_marginBottom="10dp"
                                     android:text="Thể Loại"
-                                    android:textStyle="bold"
-                                    android:textSize="16sp" />
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
 
                                 <Button
                                     android:id="@+id/btnTheLoai"
@@ -133,16 +137,16 @@
                         android:orientation="horizontal">
 
                         <androidx.cardview.widget.CardView
-                            app:cardCornerRadius="15dp"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_marginRight="10dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            app:cardCornerRadius="15dp">
 
                             <RelativeLayout
-                                android:background="@drawable/background_item"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                                android:layout_height="match_parent"
+                                android:background="@drawable/background_item">
 
                                 <ImageView
                                     android:id="@+id/imgBook"
@@ -159,8 +163,8 @@
                                     android:layout_marginTop="10dp"
                                     android:layout_marginBottom="10dp"
                                     android:text="Sách"
-                                    android:textStyle="bold"
-                                    android:textSize="16sp" />
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
 
                                 <Button
                                     android:id="@+id/btnBook"
@@ -171,15 +175,15 @@
                         </androidx.cardview.widget.CardView>
 
                         <androidx.cardview.widget.CardView
-                            app:cardCornerRadius="15dp"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            app:cardCornerRadius="15dp">
 
                             <RelativeLayout
-                                android:background="@drawable/background_item"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                                android:layout_height="match_parent"
+                                android:background="@drawable/background_item">
 
                                 <ImageView
                                     android:id="@+id/imgHoaDon"
@@ -196,8 +200,8 @@
                                     android:layout_marginTop="10dp"
                                     android:layout_marginBottom="10dp"
                                     android:text="Hoá Đơn"
-                                    android:textStyle="bold"
-                                    android:textSize="16sp" />
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
 
                                 <Button
                                     android:id="@+id/btnHoaDon"
@@ -215,16 +219,16 @@
                         android:orientation="horizontal">
 
                         <androidx.cardview.widget.CardView
-                            app:cardCornerRadius="15dp"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_marginRight="10dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            app:cardCornerRadius="15dp">
 
                             <RelativeLayout
-                                android:background="@drawable/background_item"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                                android:layout_height="match_parent"
+                                android:background="@drawable/background_item">
 
                                 <ImageView
                                     android:id="@+id/imgSachBanChay"
@@ -241,8 +245,8 @@
                                     android:layout_marginTop="10dp"
                                     android:layout_marginBottom="10dp"
                                     android:text="Sách Bán Chạy"
-                                    android:textStyle="bold"
-                                    android:textSize="16sp" />
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
 
                                 <Button
                                     android:id="@+id/btnSachBanChay"
@@ -253,22 +257,22 @@
                         </androidx.cardview.widget.CardView>
 
                         <androidx.cardview.widget.CardView
-                            app:cardCornerRadius="15dp"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            app:cardCornerRadius="15dp">
 
                             <RelativeLayout
-                                android:background="@drawable/background_item"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent">
+                                android:layout_height="match_parent"
+                                android:background="@drawable/background_item">
 
                                 <ImageView
                                     android:id="@+id/imgThongKe"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_centerInParent="true"
-                                    android:src="@drawable/cateicon" />
+                                    android:src="@drawable/statistic_icon" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -278,8 +282,8 @@
                                     android:layout_marginTop="10dp"
                                     android:layout_marginBottom="10dp"
                                     android:text="Thống Kê"
-                                    android:textStyle="bold"
-                                    android:textSize="16sp" />
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
 
                                 <Button
                                     android:id="@+id/btnThongKe"
